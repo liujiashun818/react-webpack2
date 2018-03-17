@@ -1,6 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+var autoprefixer = require('autoprefixer');
+
 module.exports = {
   entry: [
     'babel-polyfill',
@@ -35,24 +38,24 @@ module.exports = {
       },
       {
         test: /\.less$/,
-        use: [{
-          loader: 'style-loader',
-        }, {
-          loader: 'css-loader',
-        }, {
-          loader: 'less-loader',
-          options: {
-            sourceMap: true,
-          },
-        }],
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            'css-loader',
+            'postcss-loader',
+            'less-loader'
+          ]
+        })
       },
     ]
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+    new ExtractTextPlugin("styles.css"),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './src/index.template.html'),
       inject: true
     })
-  ]
+  ],
+  // postcss: [autoprefixer({ browsers: ['last 2 versions']})]
 }
