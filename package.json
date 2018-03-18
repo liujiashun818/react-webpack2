@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node bin/dev-server",
+    "start": "node bin/dev-server ",
     "dev": "webpack --mode development",
     "build": "webpack --mode production"
   },
@@ -13,6 +13,7 @@
   "devDependencies": {
     "autoprefixer-loader": "^3.2.0",
     "babel-eslint": "^8.2.2",
+    "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^0.28.10",
     "eslint": "^4.18.2",
     "eslint-config-airbnb": "^16.1.0",
@@ -21,6 +22,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.0.6",
     "less": "^3.0.1",
     "less-loader": "^4.1.0",
